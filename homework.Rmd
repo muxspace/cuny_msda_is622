@@ -1,0 +1,21 @@
+---
+title: 'IS622: Homework x'
+author: 'Student Name'
+output: pdf_document
+---
+
+```{r, message=FALSE, warning=FALSE}
+# Compile using
+# library(rmarkdown); render('homework.Rmd')
+library(rhdfs)
+library(rmr2)
+# Add other libraries here
+# Include a separate file with functions as appropriate
+#source('functions.R')
+```
+
+***
+## Question x.y.z
+
+***
+## Question a.b.c
