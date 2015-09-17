@@ -1,4 +1,10 @@
 # Overview
+This script sets up Hadoop. Spark, and associated R bindings in a
+Linux environment. The script should be compatible with most debian
+variants of Linux, including Ubuntu.
+
+If you don't have a Linux machine available, your options are to either
+install Linux on a virtual machine or use a hosted cloud provider.
 
 # RHadoop
 ## Installation
@@ -29,13 +35,20 @@ with the caveat that your machine has specs greater than or equal to
 the reference machine.
 
 ### Step 3: Start Hadoop and YARN
-Initialize the name node.
+Initialize the name node. Only do this once.
 
 ```bash
 $HADOOP_HOME/bin/hdfs namenode -format
 ```
 
 Now start all daemons.
+```bash
+cd ~/workspace/cuny_msda_is622
+./bin/start_all.sh
+```
+
+This will start the Hadoop daemons and the resource managers. Behind the
+scenes this script is simply making the below commands.
 ```bash
 # Start the namenode daemon
 $HADOOP_HOME/sbin/hadoop-daemon.sh start namenode
