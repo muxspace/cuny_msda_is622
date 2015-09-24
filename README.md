@@ -4,10 +4,14 @@ Linux environment. The script should be compatible with most debian
 variants of Linux, including Ubuntu.
 
 If you don't have a Linux machine available, your options are to either
-install Linux on a virtual machine or use a hosted cloud provider.
+install Linux on a virtual machine or use a hosted cloud provider. I 
+recommend installing the [Ubuntu 15.04 server](http://releases.ubuntu.com/15.04/ubuntu-15.04-server-amd64.iso).
 
 # RHadoop
 ## Installation
+### Step 0: Prerequisites
+Install Java 1.7
+
 ### Step 1: Install Hadoop and Spark
 The script `setup_reqs.sh`downloads Hadoop and Spark.
 
@@ -136,9 +140,33 @@ result <- from.dfs(out.ptr, format="csv")
 https://github.com/RevolutionAnalytics/rmr2/blob/master/docs/getting-data-in-and-out.md
 
 
-
+### Another Example
 Iris
 Export as CSV
 
 Read as CSV
+
+## Other Commands
+Here are some other commands that you will find useful.
+
+### Stop Hadoop
+./hadoop-daemon.sh stop datanode
+./hadoop-daemon.sh stop namenode
+
+
+# Troubleshooting
+
+## java.io.IOException: Incompatible clusterIDs
+Somehow your namenode and datanode got assigned different cluster IDs. You can edit the Hadoop configuration to make the two IDs match. First look at the IDs:
+```bash
+cd $HADOOP_HOME
+grep clusterID hdfs/*/current/VERSION
+```
+If these do not match, then:
++ stop the datanode and namenode;
++ copy the cluster ID from one file;
++ edit the other file and replace the cluster ID;
++ restart the namenode and datanode.
+
+In the `$HADOOP_HOME/logs` directory, verify that the datanode and namenode log files do not have any FATAL errors.
 
