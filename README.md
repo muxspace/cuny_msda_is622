@@ -11,6 +11,9 @@ recommend installing the [Ubuntu 15.04 server](http://releases.ubuntu.com/15.04/
 ## Installation
 ### Step 0: Prerequisites
 Install Java 1.7
+```bash
+sudo apt-get install openjdk-7-jdk
+```
 
 ### Step 1: Install Hadoop and Spark
 The script `setup_reqs.sh`downloads Hadoop and Spark.
