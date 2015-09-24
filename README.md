@@ -131,7 +131,7 @@ out.ptr <- mapreduce(input, input.format=tsv.format,
   reduce=function(k,v) {
     keyval(k, length(v))
   })
-result <- from.dfs(out.ptr)
+result <- from.dfs(out.ptr, format="csv")
 ```
 https://github.com/RevolutionAnalytics/rmr2/blob/master/docs/getting-data-in-and-out.md
 
