@@ -11,6 +11,7 @@ do_error() {
 [ -z "$HADOOP_STREAMING" ] && do_error 1 "Missing HADOOP_STREAMING"
 
 # Install RHadoop packages
+Rscript --vanilla -e "install.packages('devtools')"
 Rscript --vanilla -e "library(devtools)" \
   -e "install_github('RevolutionAnalytics/quickcheck/pkg')" \
   -e "install_github('RevolutionAnalytics/rhdfs/pkg')" \
