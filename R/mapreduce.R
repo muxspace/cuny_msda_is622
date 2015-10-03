@@ -1,4 +1,5 @@
-#library(lambda.tools)
+library(lambda.r)
+library(lambda.tools)
 
 keyval <- function(k,v) {
   kv <- list(v)
@@ -6,7 +7,13 @@ keyval <- function(k,v) {
   kv
 }
 
-mapreduce <- function(x, map=NULL, reduce=NULL, mjobs=10, rjobs=2) {
+mapreduce(x, map, reduce, mjobs, rjobs) %::% data.frame :Function:Function:.:.:.
+mapreduce(x, map=NULL, reduce=NULL, mjobs=10, rjobs=2) %as% {
+  mapreduce(as.list(x), map, reduce, mjobs, rjobs)
+}
+
+mapreduce(x, map, reduce, mjobs, rjobs) %::% . :Function:Function:.:.:.
+mapreduce(x, map=NULL, reduce=NULL, mjobs=10, rjobs=2) %as% {
   iter_fn <- function(f) 
     function(i) {
       idx <- (mlength * (i-1) + 1) : (mlength * i)
@@ -21,7 +28,9 @@ mapreduce <- function(x, map=NULL, reduce=NULL, mjobs=10, rjobs=2) {
   # Map stage
   if (!is.null(map)) {
     mlength <- ceiling(length(x) / mjobs)
-    mresult <- do.call(c, do.call(c, lapply(1:mjobs, iter_fn(map))))
+    mresult <- do.call(c, lapply(1:mjobs, iter_fn(map)))
+    names(mresult) <- NULL
+    mresult <- do.call(c, mresult)
     mresult <- mresult[!sapply(mresult, is.null)]
    
     # Sort
