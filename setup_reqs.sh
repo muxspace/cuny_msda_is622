@@ -38,9 +38,12 @@ tar zxf hadoop-2.7.1.tar.gz
 rm hadoop-2.7.1.tar.gz
 
 echo "Installing Spark..."
-wget http://apache.mirrors.ionfish.org/spark/spark-1.4.1/spark-1.4.1-bin-hadoop2.6.tgz
-tar zxf spark-1.4.1-bin-hadoop2.6.tgz
-rm spark-1.4.1-bin-hadoop2.6.tgz
+wget http://d3kbcqa49mib13.cloudfront.net/spark-1.5.1-bin-hadoop2.6.tgz
+tar zxf spark-1.5.1-bin-hadoop2.6.tgz
+rm spark-1.5.1-bin-hadoop2.6.tgz
+#wget http://apache.mirrors.ionfish.org/spark/spark-1.4.1/spark-1.4.1-bin-hadoop2.6.tgz
+#tar zxf spark-1.4.1-bin-hadoop2.6.tgz
+#rm spark-1.4.1-bin-hadoop2.6.tgz
 
 
 cat <<EOT
